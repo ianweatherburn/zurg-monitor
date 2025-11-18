@@ -1,0 +1,87 @@
+# ============================================================================
+# Zurg Broken Torrent Monitor Configuration File
+# ============================================================================
+# 
+# This configuration file uses INI format.
+# 
+# Configuration priority (highest to lowest):
+#   1. Command-line arguments
+#   2. Configuration file values
+#   3. Built-in defaults
+#
+# The monitor will search for configuration files in this order:
+#   1. Path specified with -c/--config argument
+#   2. ./zurg-monitor.conf (current directory)
+#   3. ~/.config/zurg-monitor/zurg-monitor.conf
+#   4. /etc/zurg-monitor/zurg-monitor.conf
+#
+# ============================================================================
+
+[zurg]
+# Zurg server URL
+# Default: http://localhost:9999
+zurg_url = http://localhost:9999
+
+# Authentication credentials (optional)
+# Leave empty if Zurg doesn't require authentication
+# Default: empty (no authentication)
+username = riven
+password = 12345
+
+# Check interval in minutes
+# How often to check for broken torrents when running in continuous mode
+# Default: 30
+check_interval = 30
+
+# Log file path
+# Logs will be rotated automatically (max 10 files, 10MB each)
+# Default: ./logs/zurg-monitor.log
+log_file = ./logs/zurg-monitor.log
+
+# Verbose mode
+# Show INFO level messages on console (always logged to file)
+# Default: false
+verbose = false
+
+# Rate limiting configuration
+# To prevent overwhelming the Zurg API, the monitor implements rate limiting
+
+# RATE_LIMIT: Number of consecutive API requests before backing off
+# After this many requests, the monitor will pause for rate_limit_backoff seconds
+# Default: 10
+rate_limit = 10
+
+# RATE_LIMIT_DELAY: Delay in seconds between each API request
+# Default: 0.5
+rate_limit_delay = 0.5
+
+# RATE_LIMIT_BACKOFF: Backoff time in seconds after hitting rate limit
+# Default: 5
+rate_limit_backoff = 5
+
+# ============================================================================
+# NOTES:
+# ============================================================================
+#
+# 1. You can override any of these settings using command-line arguments
+#    Example: python3 zurg-monitor.py --check-interval 60
+#
+# 2. For sensitive information like passwords, consider using environment
+#    variables or command-line arguments instead of storing in this file
+#
+# 3. The monitor supports the following command-line options:
+#    -c, --config         : Specify config file path
+#    -u, --zurg-url       : Zurg URL
+#    --username           : Authentication username
+#    --password           : Authentication password
+#    -i, --check-interval : Check interval in minutes
+#    -l, --log-file       : Log file path
+#    -r, --rate-limit     : Rate limit (requests before backoff)
+#    --run-once           : Run single check and exit
+#    -t, --trace          : Enable trace logging (very verbose)
+#    -d, --debug          : Enable debug logging
+#    --dry-run            : Show what would be done without triggering repairs
+#    -v, --version        : Show version
+#    -h, --help           : Show help
+#
+# ============================================================================

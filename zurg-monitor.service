@@ -1,0 +1,60 @@
+# ============================================================================
+# Zurg Monitor systemd Service File
+# ============================================================================
+#
+# Installation:
+#   1. Copy this file to /etc/systemd/system/zurg-monitor.service
+#   2. Edit the paths and user below as needed
+#   3. Reload systemd: sudo systemctl daemon-reload
+#   4. Enable service: sudo systemctl enable zurg-monitor
+#   5. Start service: sudo systemctl start zurg-monitor
+#   6. Check status: sudo systemctl status zurg-monitor
+#   7. View logs: sudo journalctl -u zurg-monitor -f
+#
+# ============================================================================
+
+[Unit]
+Description=Zurg Broken Torrent Monitor & Repair Tool
+Documentation=https://github.com/maddguru/zurg-broken-torrent-monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# User and group to run the service as
+# Change this to match your setup
+User=root
+Group=root
+
+# Working directory (where the script is located)
+# CHANGE THIS to match your installation path
+WorkingDirectory=/opt/zurg-monitor
+
+# Command to run
+# CHANGE THIS to match your installation path
+ExecStart=/usr/bin/python3 /opt/zurg-monitor/zurg-monitor.py
+
+# Restart policy
+Restart=on-failure
+RestartSec=10s
+
+# Resource limits
+# Adjust these based on your system
+LimitNOFILE=4096
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=zurg-monitor
+
+# Security hardening (optional, adjust as needed)
+# Uncomment these for enhanced security
+#NoNewPrivileges=true
+#PrivateTmp=true
+#ProtectSystem=strict
+#ProtectHome=true
+#ReadWritePaths=/opt/zurg-monitor
+
+[Install]
+WantedBy=multi-user.target

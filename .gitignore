@@ -1,0 +1,61 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+*.log
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Type checkers
+.mypy_cache/
+.pyre/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# --- Docker ---
+# Exclude local runtime data, volumes, and tmp files
+docker-data/
+tmp/
+logs/
+
+# Ignore docker-compose override files
+docker-compose.override.yml
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+
+# --- OS / System ---
+.DS_Store
+._.DS_Store
+Thumbs.db
+._*
+._.*
+.DS_Store
+
+# --- Env files (except templates) ---
+.env
+.env.*
+!*.env.example
+!*.env.sample
+

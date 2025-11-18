@@ -1,0 +1,30 @@
+# Zurg Broken Torrent Monitor - Python Requirements
+# 
+# This project uses only Python standard library components
+# No external dependencies are required
+#
+# Minimum Python version: 3.10
+#
+# Standard library modules used:
+# - argparse (command-line parsing)
+# - base64 (authentication encoding)
+# - configparser (INI file parsing)
+# - json (JSON handling)
+# - logging (logging framework)
+# - os (operating system interface)
+# - re (regular expressions)
+# - sys (system-specific parameters)
+# - time (time access and conversions)
+# - dataclasses (data class support)
+# - datetime (date and time)
+# - enum (enumeration support)
+# - html (HTML utilities)
+# - logging.handlers (rotating file handler)
+# - pathlib (filesystem paths)
+# - typing (type hints)
+# - urllib.request (URL handling)
+# - urllib.error (URL error handling)
+# - urllib.parse (URL parsing)
+# - http.client (HTTP protocol client)
+#
+# No pip install required!
